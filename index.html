@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar Williams — BI Architect &amp; Fabric Consultant</title>
+<meta name="description" content="Omar Williams: BI Architect specialising in Power BI, Microsoft Fabric and financial services reporting for regulated institutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10192A;
+    --ink-soft:#152036;
+    --ink-line: rgba(247,244,236,0.09);
+    --paper:#F7F4EC;
+    --paper-dim:#EDE8DB;
+    --paper-line: rgba(16,25,42,0.09);
+    --signal:#C99A3B;
+    --signal-soft: rgba(201,154,59,0.14);
+    --teal:#4F8C82;
+    --slate:#8A96A8;
+    --ink-text:#1B2536;
+    --max: 1120px;
+    --display: 'Fraunces', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink-text);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; }
+  ::selection{ background: var(--signal-soft); }
+
+  :focus-visible{
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(247,244,236,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .nav-mark{
+    font-family: var(--mono);
+    font-weight:500;
+    font-size:14px;
+    letter-spacing:0.02em;
+  }
+  .nav-mark span{ color: var(--signal); }
+  .nav-links{
+    display:flex; gap:28px; list-style:none;
+    font-size:14px; font-weight:500;
+  }
+  .nav-links a{
+    text-decoration:none;
+    padding: 4px 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color .15s ease;
+  }
+  .nav-links a:hover{ border-color: var(--signal); }
+  .nav-cta{
+    font-family: var(--mono);
+    font-size:13px;
+    background: var(--ink);
+    color: var(--paper);
+    padding:9px 16px;
+    text-decoration:none;
+    border-radius:2px;
+    border:1px solid var(--ink);
+    transition: background .15s ease, color .15s ease;
+  }
+  .nav-cta:hover{ background: transparent; color: var(--ink); }
+  .nav-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow:hidden;
+    background-image:
+      linear-gradient(var(--ink-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ink-line) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 60% 50% at 15% 0%, rgba(201,154,59,0.16), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    padding: 108px 0 84px;
+  }
+  .hero .eyebrow{
+    color: var(--signal);
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero .eyebrow::before{
+    content:"";
+    width:7px; height:7px; background: var(--signal); display:inline-block;
+  }
+  h1.headline{
+    font-family: var(--display);
+    font-weight:500;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    margin: 22px 0 26px;
+    max-width: 15ch;
+  }
+  h1.headline em{
+    font-style: italic;
+    color: var(--signal);
+    font-weight:400;
+  }
+  .hero-sub{
+    font-size: 18px;
+    color: rgba(247,244,236,0.72);
+    max-width: 52ch;
+    margin-bottom: 40px;
+  }
+  .hero-actions{
+    display:flex; gap:14px; flex-wrap:wrap;
+    margin-bottom: 72px;
+  }
+  .btn{
+    font-family: var(--mono);
+    font-size:13.5px;
+    padding: 13px 22px;
+    text-decoration:none;
+    border-radius:2px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn-primary{
+    background: var(--signal);
+    color: var(--ink);
+  }
+  .btn-primary:hover{ transform: translateY(-1px); }
+  .btn-ghost{
+    border: 1px solid rgba(247,244,236,0.28);
+    color: var(--paper);
+  }
+  .btn-ghost:hover{ border-color: var(--signal); color: var(--signal); }
+
+  /* formula-bar stat strip */
+  .statbar{
+    border-top: 1px solid var(--ink-line);
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stat{
+    padding: 22px 0 0;
+    border-left: 1px solid var(--ink-line);
+    padding-left: 20px;
+  }
+  .stat:first-child{ border-left:none; padding-left:0; }
+  .stat .fx{
+    font-family: var(--mono);
+    font-size:11.5px;
+    color: var(--slate);
+    margin-bottom: 8px;
+  }
+  .stat .val{
+    font-family: var(--display);
+    font-size: 26px;
+    color: var(--paper);
+  }
+  .stat .label{
+    font-size: 13px;
+    color: rgba(247,244,236,0.6);
+    margin-top:4px;
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{ padding: 96px 0; }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap: 24px; margin-bottom: 48px; flex-wrap:wrap;
+  }
+  .section-head .eyebrow{ color: var(--signal); margin-bottom:12px; display:block; }
+  h2.section-title{
+    font-family: var(--display);
+    font-weight:500;
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing:-0.01em;
+  }
+  .section-note{
+    max-width: 34ch;
+    font-size:14.5px;
+    color:#5B6B7C;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+  }
+  .about-body p{ margin-bottom:18px; font-size:16.5px; color:#33405A; max-width: 58ch;}
+  .about-body p strong{ color: var(--ink-text); }
+  .credentials{
+    border-top:1px solid var(--paper-line);
+  }
+  .credential{
+    display:flex; justify-content:space-between; gap:16px;
+    padding: 16px 0;
+    border-bottom:1px solid var(--paper-line);
+    font-size: 14px;
+  }
+  .credential .k{ color:#5B6B7C; }
+  .credential .v{ font-family: var(--mono); font-size:13px; text-align:right; }
+
+  /* ---------- SERVICES ---------- */
+  .services{ background: var(--paper-dim); }
+  .service-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:1px;
+    background: var(--paper-line);
+    border:1px solid var(--paper-line);
+  }
+  .service{
+    background: var(--paper-dim);
+    padding: 32px 28px;
+    border-left: 3px solid transparent;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .service:hover{ border-left-color: var(--signal); background: var(--paper); }
+  .service .fx{
+    font-family: var(--mono); font-size:11.5px; color: var(--signal);
+    margin-bottom:14px; display:block;
+  }
+  .service h3{
+    font-family: var(--display);
+    font-weight:500;
+    font-size:21px;
+    margin-bottom:12px;
+  }
+  .service p{
+    font-size:14.5px; color:#4C596E; margin-bottom:16px;
+  }
+  .service .for{
+    font-family: var(--mono); font-size:11.5px; color:#7A8494;
+    border-top:1px solid var(--paper-line); padding-top:12px;
+  }
+
+  /* ---------- PORTFOLIO (report-canvas signature) ---------- */
+  .portfolio{ background: var(--ink); color: var(--paper); }
+  .portfolio .section-note{ color: var(--slate); }
+  .canvas-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap:28px;
+  }
+  .canvas{
+    background: var(--ink-soft);
+    border:1px solid var(--ink-line);
+    border-radius: 4px;
+    overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .canvas-top{
+    padding: 26px 26px 20px;
+    background-image:
+      linear-gradient(var(--ink-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ink-line) 1px, transparent 1px);
+    background-size: 22px 22px;
+    flex:1;
+  }
+  .canvas-kicker{
+    font-family: var(--mono); font-size:11px; color: var(--signal);
+    margin-bottom:10px;
+  }
+  .canvas h3{
+    font-family: var(--display); font-weight:500; font-size:24px; margin-bottom:10px;
+  }
+  .canvas p{
+    font-size:14px; color: rgba(247,244,236,0.68); max-width:44ch; margin-bottom:18px;
+  }
+  .canvas-metrics{
+    display:flex; gap:22px; flex-wrap:wrap;
+  }
+  .canvas-metrics div{ font-family: var(--mono); font-size:11.5px; color: var(--slate); }
+  .canvas-metrics strong{ display:block; font-family: var(--body); font-size:16px; color: var(--paper); font-weight:600; }
+  /* Power-BI style page tabs */
+  .canvas-tabs{
+    display:flex; border-top:1px solid var(--ink-line);
+    background: rgba(0,0,0,0.15);
+  }
+  .canvas-tabs button{
+    font-family: var(--mono);
+    font-size:11px;
+    color: var(--slate);
+    background:none; border:none; cursor:default;
+    padding: 11px 16px;
+    border-right: 1px solid var(--ink-line);
+  }
+  .canvas-tabs button.active{
+    color: var(--signal);
+    background: var(--ink-soft);
+    box-shadow: inset 0 2px 0 var(--signal);
+  }
+  .canvas-case{
+    grid-column: 1 / -1;
+  }
+  .case-strip{
+    display:grid; grid-template-columns: repeat(3,1fr); gap:1px;
+    background: var(--ink-line);
+    border:1px solid var(--ink-line);
+    border-radius:4px; overflow:hidden;
+  }
+  .case-item{
+    background: var(--ink-soft); padding:24px;
+  }
+  .case-item .fx{ font-family:var(--mono); font-size:11px; color:var(--teal); margin-bottom:10px; }
+  .case-item h4{ font-family:var(--display); font-size:17px; font-weight:500; margin-bottom:8px; }
+  .case-item p{ font-size:13.5px; color: rgba(247,244,236,0.62); }
+
+  /* ---------- PROCESS ---------- */
+  .process-row{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:0;
+    position:relative;
+  }
+  .process-row::before{
+    content:"";
+    position:absolute; top:13px; left:0; right:0; height:1px;
+    background: var(--paper-line);
+  }
+  .step{ padding-right:28px; }
+  .step .num{
+    font-family: var(--mono); font-size:12px; color: var(--signal);
+    background: var(--paper); padding-right:12px; position:relative; z-index:1;
+  }
+  .step h3{
+    font-family: var(--display); font-weight:500; font-size:19px;
+    margin: 18px 0 10px;
+  }
+  .step p{ font-size:14px; color:#4C596E; max-width:32ch; }
+
+  /* ---------- CONTACT ---------- */
+  footer.site{
+    background: var(--ink); color: var(--paper);
+    padding: 88px 0 40px;
+  }
+  .contact-grid{
+    display:grid; grid-template-columns: 1.2fr 1fr; gap: 56px;
+    padding-bottom:56px; border-bottom:1px solid var(--ink-line);
+  }
+  .contact-title{
+    font-family: var(--display); font-weight:500;
+    font-size: clamp(30px, 4vw, 46px);
+    max-width:14ch; line-height:1.08; margin-bottom:20px;
+  }
+  .contact-title em{ font-style:italic; color: var(--signal); }
+  .contact-links{ display:flex; flex-direction:column; gap:10px; }
+  .contact-links a{
+    font-family: var(--mono); font-size:14px; text-decoration:none;
+    color: var(--paper); border-bottom:1px solid var(--ink-line); padding-bottom:8px;
+    display:flex; justify-content:space-between;
+  }
+  .contact-links a:hover{ color: var(--signal); }
+  .contact-meta{ font-size:13.5px; color: var(--slate); }
+  .contact-meta p{ margin-bottom:10px; }
+  .foot-bottom{
+    display:flex; justify-content:space-between; padding-top:28px;
+    font-family: var(--mono); font-size:11.5px; color: var(--slate); flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- REVEAL ---------- */
+  [data-reveal]{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  [data-reveal].in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .nav-links{ display:none; }
+    .about-grid{ grid-template-columns:1fr; gap:40px; }
+    .service-grid{ grid-template-columns:1fr; }
+    .canvas-grid{ grid-template-columns:1fr; }
+    .case-strip{ grid-template-columns:1fr; }
+    .process-row{ grid-template-columns:1fr; gap:32px; }
+    .process-row::before{ display:none; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .statbar{ grid-template-columns:1fr; gap:16px; }
+    .stat{ border-left:none; padding-left:0; border-top:1px solid var(--ink-line); padding-top:16px; }
+    .stat:first-child{ border-top:none; }
+  }
+  @media (max-width:520px){
+    .wrap{ padding:0 20px; }
+    section{ padding:64px 0; }
+    .hero-inner{ padding: 84px 0 56px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <div class="nav-mark">OMAR<span>·</span>WILLIAMS</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Start a conversation</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">BI Architect · Power BI · Microsoft Fabric</span>
+    <h1 class="headline">Reporting infrastructure regulated institutions can <em>actually</em> trust.</h1>
+    <p class="hero-sub">I'm Omar Williams — 14+ years building semantic models, DAX, and Fabric governance for FP&amp;A, treasury and credit risk teams. I run Milestone BI, a practice built on one idea: numbers that reconcile the first time.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">Book an intro call →</a>
+      <a class="btn btn-ghost" href="#portfolio">View the work</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="statbar">
+      <div class="stat">
+        <div class="fx">=EXPERIENCE()</div>
+        <div class="val">14+ yrs</div>
+        <div class="label">Financial services BI &amp; analytics</div>
+      </div>
+      <div class="stat">
+        <div class="fx">=MEASURES()</div>
+        <div class="val">30+</div>
+        <div class="label">DAX measures shipped in a single model</div>
+      </div>
+      <div class="stat">
+        <div class="fx">=CLIENTELE()</div>
+        <div class="val">Regulated</div>
+        <div class="label">FP&amp;A, treasury &amp; credit risk institutions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div data-reveal>
+      <span class="eyebrow" style="color:var(--signal)">About</span>
+      <h2 class="section-title" style="margin:14px 0 24px;">A practitioner first, a company second.</h2>
+      <div class="about-body">
+        <p><strong>I'm Omar</strong> — I've spent the last 14+ years inside regulated institutions that cannot afford a wrong number: banks, asset managers, and insurers where a broken variance report isn't an inconvenience, it's a control failure. My focus sits at the intersection of <strong>Microsoft Fabric</strong> and <strong>financial services domain fluency</strong> — semantic modelling, DAX, and governed lakehouse architecture built specifically for FP&amp;A, treasury and credit risk reporting.</p>
+        <p>Milestone BI is the practice I run, but the work is mine — every model, every measure, every governance decision is something I've built and stood behind personally. Consulting engagements double as design partnerships: real problems from real reporting teams inform the tools I build next, including an AI-assisted financial commentary engine I'm currently developing to automate variance narratives at month-end close.</p>
+      </div>
+    </div>
+    <div data-reveal>
+      <div class="credentials">
+        <div class="credential"><span class="k">Specialism</span><span class="v">Power BI · Fabric · DAX</span></div>
+        <div class="credential"><span class="k">Domain</span><span class="v">FP&amp;A · Treasury · Credit Risk</span></div>
+        <div class="credential"><span class="k">Client profile</span><span class="v">Regulated institutions</span></div>
+        <div class="credential"><span class="k">Experience</span><span class="v">14+ years</span></div>
+        <div class="credential"><span class="k">Practice</span><span class="v">Milestone BI Limited</span></div>
+        <div class="credential"><span class="k">Based</span><span class="v">United Kingdom</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Services</span>
+        <h2 class="section-title">Three ways to work together</h2>
+      </div>
+      <p class="section-note">Packaged engagements, not open-ended retainers — scoped so you know what you're getting before we start.</p>
+    </div>
+    <div class="service-grid" data-reveal>
+      <div class="service">
+        <span class="fx">01 · SPRINT</span>
+        <h3>FP&amp;A Reporting Accelerator</h3>
+        <p>A focused engagement to rebuild your management reporting on a governed semantic model — accurate, fast, and reconciled to source.</p>
+        <div class="for">For: FP&amp;A teams outgrowing spreadsheet-based reporting</div>
+      </div>
+      <div class="service">
+        <span class="fx">02 · SPRINT</span>
+        <h3>Fabric Governance Sprint</h3>
+        <p>Lakehouse and semantic-layer governance built for institutions that get audited — lineage, access control, and version discipline from day one.</p>
+        <div class="for">For: regulated institutions adopting Microsoft Fabric</div>
+      </div>
+      <div class="service">
+        <span class="fx">03 · RETAINER</span>
+        <h3>Strategic Retainer</h3>
+        <p>Ongoing embedded BI leadership — model maintenance, DAX optimisation, and roadmap input, billed monthly.</p>
+        <div class="for">For: teams that need senior BI judgement on tap</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Portfolio</span>
+        <h2 class="section-title">Work built to a production standard</h2>
+      </div>
+      <p class="section-note">Selected builds — from full star-schema Power BI solutions to prototype product work.</p>
+    </div>
+
+    <div class="canvas-grid" data-reveal>
+      <article class="canvas">
+        <div class="canvas-top">
+          <div class="canvas-kicker">POWER BI · SEMANTIC MODEL</div>
+          <h3>Business Milestone BI</h3>
+          <p>A portfolio-grade Power BI solution on a synthetic online retail dataset — full star schema, 30+ DAX measures, and a five-page report design covering sales, margin, and operational performance.</p>
+          <div class="canvas-metrics">
+            <div><strong>Star schema</strong>Fact + conformed dims</div>
+            <div><strong>30+</strong>DAX measures</div>
+            <div><strong>5 pages</strong>Report design</div>
+          </div>
+        </div>
+        <div class="canvas-tabs">
+          <button class="active">Overview</button>
+          <button>Sales</button>
+          <button>Margin</button>
+          <button>Operations</button>
+          <button>Model</button>
+        </div>
+      </article>
+
+      <article class="canvas">
+        <div class="canvas-top">
+          <div class="canvas-kicker">PRODUCT PROTOTYPE · REACT</div>
+          <h3>ClearFlow</h3>
+          <p>A cash flow dashboard for small businesses (1–10 staff) — runway forecasting, automated invoice chasing, and real-time P&amp;L visibility in a single view.</p>
+          <div class="canvas-metrics">
+            <div><strong>Runway</strong>Forecast engine</div>
+            <div><strong>Automated</strong>Invoice chasing</div>
+            <div><strong>Real-time</strong>P&amp;L view</div>
+          </div>
+        </div>
+        <div class="canvas-tabs">
+          <button class="active">Dashboard</button>
+          <button>Forecast</button>
+          <button>Invoices</button>
+          <button>P&amp;L</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="canvas-case" style="margin-top:28px;" data-reveal>
+      <div class="section-head" style="margin-bottom:20px;">
+        <div>
+          <span class="eyebrow">Engagement patterns</span>
+          <h2 class="section-title" style="font-size:24px;">FP&amp;A &amp; Fabric case work</h2>
+        </div>
+      </div>
+      <div class="case-strip">
+        <div class="case-item">
+          <span class="fx">TREASURY</span>
+          <h4>Liquidity reporting rebuild</h4>
+          <p>Replaced a spreadsheet-based liquidity pack with a governed semantic model, cutting month-end reconciliation time significantly.</p>
+        </div>
+        <div class="case-item">
+          <span class="fx">CREDIT RISK</span>
+          <h4>Exposure dashboard &amp; lineage</h4>
+          <p>Built a credit risk exposure dashboard with full data lineage documentation to satisfy internal audit requirements.</p>
+        </div>
+        <div class="case-item">
+          <span class="fx">FP&amp;A</span>
+          <h4>Variance commentary automation</h4>
+          <p>Designed a DAX-driven variance engine that flags and explains material budget deviations before the close review.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Process</span>
+        <h2 class="section-title">How an engagement runs</h2>
+      </div>
+      <p class="section-note">Three phases, scoped up front — no open-ended discovery loops.</p>
+    </div>
+    <div class="process-row" data-reveal>
+      <div class="step">
+        <span class="num">DISCOVERY</span>
+        <h3>Understand the model</h3>
+        <p>Audit current reporting, data sources, and where the numbers stop reconciling.</p>
+      </div>
+      <div class="step">
+        <span class="num">BUILD</span>
+        <h3>Design &amp; build</h3>
+        <p>Star schema, DAX measures, and report pages built against agreed requirements.</p>
+      </div>
+      <div class="step">
+        <span class="num">HANDOVER</span>
+        <h3>Govern &amp; hand over</h3>
+        <p>Documentation, access control, and a team that can maintain it without me.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div data-reveal>
+        <span class="eyebrow" style="color:var(--signal)">Get in touch</span>
+        <h2 class="contact-title" style="margin-top:14px;">Let's make your <em>numbers</em> trustworthy.</h2>
+        <p style="color:var(--slate); font-size:15px; max-width:44ch;">Whether it's a reporting rebuild, a Fabric governance gap, or an ongoing need for senior BI judgement — tell me what's not reconciling.</p>
+      </div>
+      <div data-reveal>
+        <div class="contact-links">
+          <a href="mailto:owilliams@milestonebi.com">Email <span>owilliams@milestonebi.com</span></a>
+          <a href="https://www.linkedin.com/in/omar-williams84/" target="_blank" rel="noopener">LinkedIn <span>/in/omar-williams84 →</span></a>
+          <a href="https://milestonebi.com" target="_blank" rel="noopener">Milestone BI <span>milestonebi.com</span></a>
+        </div>
+        <div class="contact-meta" style="margin-top:24px;">
+          <p>Milestone BI Limited · United Kingdom</p>
+          <p>Available for accelerator sprints, governance engagements, and strategic retainers.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Omar Williams · Milestone BI Limited</span>
+      <span>Built locally · not yet deployed</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // scroll reveal
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const els = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
