@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Omar Williams — BI Architect &amp; Fabric Consultant</title>
 <meta name="description" content="Omar Williams: BI Architect specialising in Power BI, Microsoft Fabric and financial services reporting for regulated institutions.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Omar Williams — BI Architect &amp; Fabric Consultant">
+<meta property="og:description" content="14+ years building semantic models, DAX and Fabric governance for FP&amp;A, treasury and credit risk teams.">
+<meta property="og:image" content="https://omar.milestonebi.com/assets/omar-williams-headshot.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://omar.milestonebi.com/assets/omar-williams-headshot.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -120,7 +126,40 @@
   }
   .hero-inner{
     position:relative;
-    padding: 108px 0 84px;
+    padding: 108px 0 72px;
+    display:grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+    gap: 64px;
+    align-items:center;
+  }
+  .hero-photo{
+    position:relative;
+    justify-self:end;
+    width:100%;
+    max-width: 360px;
+  }
+  .hero-photo picture{ display:block; position:relative; }
+  .hero-photo picture::after{
+    content:"";
+    position:absolute; inset:0;
+    border:1px solid rgba(201,154,59,0.5);
+    transform: translate(16px, 16px);
+    pointer-events:none;
+  }
+  .hero-photo img{
+    position:relative;
+    width:100%;
+    height:auto;
+    border-radius:2px;
+    border:1px solid rgba(247,244,236,0.14);
+  }
+  .hero-photo .caption{
+    font-family: var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color: rgba(247,244,236,0.55);
+    margin-top: 16px;
   }
   .hero .eyebrow{
     color: var(--signal);
@@ -152,7 +191,6 @@
   }
   .hero-actions{
     display:flex; gap:14px; flex-wrap:wrap;
-    margin-bottom: 72px;
   }
   .btn{
     font-family: var(--mono);
@@ -230,6 +268,27 @@
   }
   .about-body p{ margin-bottom:18px; font-size:16.5px; color:#33405A; max-width: 58ch;}
   .about-body p strong{ color: var(--ink-text); }
+  .about-photo{
+    margin-bottom: 28px;
+    position:relative;
+  }
+  .about-photo img{
+    width:100%;
+    height:auto;
+    border-radius:2px;
+    border:1px solid var(--paper-line);
+  }
+  .about-photo figcaption{
+    font-family: var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#5B6B7C;
+    margin-top:12px;
+    padding-left:12px;
+    border-left:2px solid var(--signal);
+  }
+
   .credentials{
     border-top:1px solid var(--paper-line);
   }
@@ -405,7 +464,11 @@
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
     .nav-links{ display:none; }
+    .hero-inner{ grid-template-columns:1fr; gap:48px; }
+    .hero-photo{ justify-self:start; max-width:280px; }
+    .hero-photo picture::after{ transform: translate(10px, 10px); }
     .about-grid{ grid-template-columns:1fr; gap:40px; }
+    .about-photo{ max-width:360px; }
     .service-grid{ grid-template-columns:1fr; }
     .canvas-grid{ grid-template-columns:1fr; }
     .case-strip{ grid-template-columns:1fr; }
@@ -440,13 +503,24 @@
 
 <section class="hero">
   <div class="wrap hero-inner">
-    <span class="eyebrow">BI Architect · Power BI · Microsoft Fabric</span>
-    <h1 class="headline">Reporting infrastructure regulated institutions can <em>actually</em> trust.</h1>
-    <p class="hero-sub">I'm Omar Williams — 14+ years building semantic models, DAX, and Fabric governance for FP&amp;A, treasury and credit risk teams. I run Milestone BI, a practice built on one idea: numbers that reconcile the first time.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#contact">Book an intro call →</a>
-      <a class="btn btn-ghost" href="#portfolio">View the work</a>
+    <div class="hero-copy">
+      <span class="eyebrow">BI Architect · Power BI · Microsoft Fabric</span>
+      <h1 class="headline">Reporting infrastructure regulated institutions can <em>actually</em> trust.</h1>
+      <p class="hero-sub">I'm Omar Williams — 14+ years building semantic models, DAX, and Fabric governance for FP&amp;A, treasury and credit risk teams. I run Milestone BI, a practice built on one idea: numbers that reconcile the first time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Book an intro call →</a>
+        <a class="btn btn-ghost" href="#portfolio">View the work</a>
+      </div>
     </div>
+    <figure class="hero-photo">
+      <picture>
+        <source srcset="assets/omar-williams-headshot.webp" type="image/webp">
+        <img src="assets/omar-williams-headshot.jpg" width="900" height="1200"
+             alt="Omar Williams, BI Architect and founder of Milestone BI"
+             fetchpriority="high" decoding="async">
+      </picture>
+      <figcaption class="caption">Omar Williams · BI Architect</figcaption>
+    </figure>
   </div>
   <div class="wrap">
     <div class="statbar">
@@ -480,6 +554,15 @@
       </div>
     </div>
     <div data-reveal>
+      <figure class="about-photo">
+        <picture>
+          <source srcset="assets/omar-williams-portrait.webp" type="image/webp">
+          <img src="assets/omar-williams-portrait.jpg" width="820" height="1094"
+               alt="Omar Williams, founder of Milestone BI Limited"
+               loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Omar Williams · Founder, Milestone BI Limited</figcaption>
+      </figure>
       <div class="credentials">
         <div class="credential"><span class="k">Specialism</span><span class="v">Power BI · Fabric · DAX</span></div>
         <div class="credential"><span class="k">Domain</span><span class="v">FP&amp;A · Treasury · Credit Risk</span></div>
